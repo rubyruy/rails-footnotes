@@ -29,12 +29,9 @@ module Footnotes
       end
 
       protected
-        def template_extension(path)
-          @template.finder.pick_template_extension(path)
-        end
 
         def template_base_path(path)
-          @template.finder.pick_template(path, template_extension(path))
+          @template.send(:template_file_from_name,path)
         end
 
         def template_path
@@ -42,7 +39,7 @@ module Footnotes
         end
 
         def template_file_name
-          File.expand_path(template_base_path(template_path))
+          template_base_path(template_path).full_path
         end
     end
   end

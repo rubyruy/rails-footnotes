@@ -21,7 +21,7 @@ module Footnotes
 
       protected
         def layout_file_name
-          File.expand_path(template_base_path(@controller.active_layout))
+          template_base_path(@controller.active_layout).full_path
         end
     end
   end
